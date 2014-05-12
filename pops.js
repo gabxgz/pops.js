@@ -1,11 +1,13 @@
 var Popup = function ( anchorId, width, height ) {
-    
-    this.anchorId = anchorId;
-    this.width = width;
-    this.height = height;
-    this.url = document.getElementById(anchorId).href;
-    this.element = document.getElementById(anchorId);
-        
+    if (document.getElementById(anchor)){
+        this.anchorId = anchorId;
+        this.width = width;
+        this.height = height;
+        this.url = document.getElementById(anchorId).href;
+        this.element = document.getElementById(anchorId);
+    } else {
+        return false;
+    }
 };
 
 // Popup function
@@ -20,20 +22,23 @@ Popup.prototype.pop = function () {
 
 // Initialize Popup
 Popup.prototype.init = function(){
-    
-    var that = this;
-    //
-    var urlParameter = getParameterByName('pop');
-    
-    // Bind popup to click event    
-    this.element.onclick = function(event){
-        event.preventDefault();
-        that.pop();
-    };
-    
-    // Popup onload if set to true
-    if ( urlParameter === this.anchorId ){
-        that.pop();
+    if (document.getElementById(this.anchor)) {
+        var that = this;
+        //
+        var urlParameter = getParameterByName('pop');
+        
+        // Bind popup to click event    
+        this.element.onclick = function(event){
+            event.preventDefault();
+            that.pop();
+        };
+        
+        // Popup onload if set to true
+        if ( urlParameter === this.anchorId ){
+            that.pop();
+        }
+    } else {
+        return false;
     }
     
 };
