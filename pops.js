@@ -1,5 +1,5 @@
 var Popup = function ( anchorId, width, height ) {
-    if (document.getElementById(anchor)){
+    if (document.getElementById(anchorId)){
         this.anchorId = anchorId;
         this.width = width;
         this.height = height;
@@ -40,6 +40,7 @@ Popup.prototype.init = function(){
     } else {
         return false;
     }
+    
 };
 
 //Check URL for particular parameter
