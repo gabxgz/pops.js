@@ -40,7 +40,6 @@ Popup.prototype.init = function(){
     } else {
         return false;
     }
-    
 };
 
 //Check URL for particular parameter
